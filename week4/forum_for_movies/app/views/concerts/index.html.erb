@@ -1,0 +1,30 @@
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-2 sidebar">
+			<h3>Concerts this Month</h3>
+			<ul>
+				<% @concerts_this_month.each do |concert| %>
+					<li>
+						<a href="/concerts/<%= concert.id %>"><%= concert.artist %></a>
+					</li>
+				<% end %>
+			</ul>
+		</div>
+		<div class="col-md-10">
+			<a href="/concerts/new">Add a Concert</a>
+			<h1>Today's Concerts</h1>
+			<ul>
+				<% @concerts_today.each do |concert| %>
+					<li>
+						<h2><%= concert.artist %></h2>
+						<p><strong>Venue: </strong><%= concert.venue %></p>
+						<p><strong>City: </strong><%= concert.city %></p>
+						<p><strong>Date: </strong><%= concert.date %></p>
+						<p><strong>Price: </strong><%= concert.price %></p>
+						<p><strong>Description: </strong><%= concert.description %></p>
+					</li>
+				<% end %>
+			</ul>
+		</div>
+	</div>
+</div>

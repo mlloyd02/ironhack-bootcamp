@@ -1,0 +1,33 @@
+body {
+	font-family: 'Roboto', sans-serif;
+	background-color: #f5f5f5
+}
+
+li {
+	float: left;
+	list-style: none;
+	margin-right: 10px;
+	margin-left: 0px;
+	text-align: center;
+}
+
+.content p {
+	margin-top: 20px;
+	margin-left: 10px;
+	font-size: 14pt;
+}
+
+.comment {
+	border-radius: 25px;
+    border: 1px solid blue;
+    padding: 6px; 
+}
+
+.panel {
+	background-color: white;
+	width: 95%
+	margin: auto;
+}
+
+
+

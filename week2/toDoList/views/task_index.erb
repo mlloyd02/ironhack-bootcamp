@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Task Index</title>
+</head>
+	<body>
+
+		<h1>Welcome to the TodoList</h1>
+		<% @tasks.each do | task | %>
+			<% if task.complete? == false %>
+				<ul>	
+					<li><a href="/complete_task/<%= task.id %>"><%= task.content %></a></li>
+				</ul>
+			<% end %>
+		<% end %>
+		<h1>Completed</h1>
+		<% @tasks.each do | task | %>
+			<% if task.complete? == true %>
+				<ul>	
+					<li><a href="/un_complete_task/<%= task.id %>"><%= task.content %></a></li>
+				</ul>
+			<% end %>
+		<% end %>
+		<form action="/purge_completed" method="POST">
+		<button type="submit">Purge Completed</button>
+		</form>
+		<br>
+		<a href="/new_task">Add new task</a>
+
+	</body>
+</html>
+

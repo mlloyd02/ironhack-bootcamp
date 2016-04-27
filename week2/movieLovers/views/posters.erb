@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Posters</title>
+</head>
+	<body>
+		<% @posters.each do |poster| %>
+		<img src="<%= poster %>" alt="poster image" height=200px>
+		<% end %>
+	</body>
+</html>
