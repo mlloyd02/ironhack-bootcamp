@@ -10,7 +10,7 @@ class ConcertsController < ApplicationController
 
 	def show
 		@my_concert = Concert.find_by(id: params[:id])
-		# @my_comments = @my_concert.comments.new
+		@my_review = @my_concert.reviews.new
     unless @my_concert
       render "no_concerts_found"
     end

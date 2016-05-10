@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  valence: 1.5
+  arousal: 1.5
+  datetime: 2016-05-07 16:08:34
+
+two:
+  valence: 1.5
+  arousal: 1.5
+  datetime: 2016-05-07 16:08:34

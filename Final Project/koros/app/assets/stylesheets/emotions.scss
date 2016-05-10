@@ -1,0 +1,41 @@
+// Place all the styles related to the emotions controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.AScontainer {
+		margin:2em 0 6em 0;
+		background-repeat: no-repeat, no-repeat;
+		background-position: left, right;
+		background-size:contain;
+		padding: 0 75px 0 75px;
+}
+.arousal {
+	background-image: url(AS_sleepy.png), url(AS_wideawake.png);
+	background-size:contain;
+}
+.pleasure {
+	background-image: url(AS_unhappy.png), url(AS_happy.png);
+	background-size:contain;
+}
+.AffectiveSlider input {
+	/* Hide the number input */
+	display: none;
+}
+.AffectiveSlider .ui-slider-track {
+	margin-left: 15px;
+	background-color:#FFF;
+	border-color:#000;
+}
+.AffectiveSlider .ui-slider-handle {
+	background-color:#FFF;
+	border-color:#000;
+}
+.ASintensityCue {
+	margin: 0 15px 0 15px;
+	height:48px;
+	background-image: url("AS_intensity_cue.png");
+	background-repeat: no-repeat;
+	background-size:100%;
+	background-position: center;
+	
+}

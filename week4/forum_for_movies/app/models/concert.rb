@@ -1,5 +1,5 @@
 class Concert < ActiveRecord::Base
-	has_many :comments
+	has_many :reviews
 	validates :artist, presence: true
   validates :price, numericality: true, presence: true
   validates :venue, presence: true

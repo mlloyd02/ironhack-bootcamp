@@ -5,3 +5,10 @@
 <p><strong>Price: </strong><%= @my_concert.price %></p>
 <p><strong>Description: </strong><%= @my_concert.description %></p>
 
+<div class="comment-section">
+	<%= form_for @my_review, url: {controller: "reviews", action: "create"} do |f| %>
+	  <%= f.text_area :description %>
+	  <%= f.submit "Comment" %>
+	<% end %>
+</div>
+

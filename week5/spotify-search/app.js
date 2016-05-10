@@ -18,8 +18,12 @@ $(function () {
 		  }
 		});
 	});
+	click= $('img').on('click', function(e) {
+		alert("clicked")
+	});
 });
 
+click();
 // $.ajax({
 //     url: url,
 //     success: function (result) {
