@@ -2,6 +2,9 @@ require 'pry'
 
 class EmotionsController < ApplicationController
 
+	def index
+	end
+
 	def new
 		redirect_to new_user_session_path unless user_signed_in?
 		@emotion = Emotion.new
@@ -10,7 +13,7 @@ class EmotionsController < ApplicationController
 	end
 
 	def create
-		@emotion = Emotion.new(emotion_params)
+		@emotion = current_user.emotions.new(emotion_params)
 		@emotion.save
 		redirect_to new_emotion_path
 	end
