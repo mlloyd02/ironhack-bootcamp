@@ -4,6 +4,17 @@
 
 	<%= link_to 'Logout', destroy_user_session_path, method: 'DELETE' %>
 
+	<h2>Your groups:</h2>
+	<ul>
+		<% @groups.each do |group| %>
+			<li>
+				<%= group.name %>
+			</li>
+		<% end %>
+	</ul>
+
+	<%= link_to "Create Group", new_group_path %>
+
 <% else %>
 
 	<h2>Nobody logged in</h2>
