@@ -1,0 +1,64 @@
+<% if user_signed_in? %>
+
+	<h2><%= current_user.first_name %>, how are you feeling right now?</h2> 
+
+	<%= link_to 'Logout', destroy_user_session_path, method: 'DELETE' %>
+
+	<h2>Your groups:</h2>
+	<ul>
+		<% @groups.each do |group| %>
+			<li>
+				<%= link_to group.name, group_path(group.id) %>
+			</li>
+		<% end %>
+	</ul>
+
+	<%= link_to "Create Group", new_group_path %>
+	<h1>Emotions Month</h1>
+	<div class="ct-chart-month"></div>
+	<h2>Average for month</h2>
+	<p>Valence: <%= @valences_month_avg %></p>
+	<p>Arousal: <%= @arousals_month_avg %></p>
+	<h1>Emotions Week</h1>
+	<div class="ct-chart-week"></div>
+	<h2>Average for week</h2>
+	<p>Valence: <%= @valences_week_avg %></p>
+	<p>Arousal: <%= @arousals_week_avg %></p>
+<% else %>
+
+	<h2>Nobody logged in</h2>
+
+<% end %>
+
+<%= javascript_tag do %>
+$(document).ready(function(){
+
+ new Chartist.Line('.ct-chart-month', {
+    labels: <%= raw @days_month %>,
+    series: [
+      <%= @valences_month %>,
+      <%= @arousals_month %>
+    ]
+  }, {
+    fullWidth: true,
+    chartPadding: {
+      right: 40
+    }
+  });
+
+	new Chartist.Line('.ct-chart-week', {
+    labels: <%= raw @days_week %>,
+    series: [
+      <%= @valences_week %>,
+      <%= @arousals_week %>
+    ]
+  }, {
+    fullWidth: true,
+    chartPadding: {
+      right: 40
+    }
+  });
+
+});
+<% end %>
+

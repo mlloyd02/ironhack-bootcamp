@@ -6,3 +6,44 @@
 		</li>
 	<% end %>
 </ul>
+
+<h1>Group Averages for Month</h1>
+<div class="ct-chart-group-month"></div>
+<h1>Group Averages for week</h1>
+<div class="ct-chart-group-week"></div>
+
+<%= javascript_tag do %>
+$(document).ready(function(){
+
+  new Chartist.Line('.ct-chart-group-month', {
+    labels: <%= raw @days_month %>,
+    series: [
+      <%= @valence_averages_month %>,
+      <%= @arousal_averages_month %>
+    ]
+  }, {
+    fullWidth: true,
+    chartPadding: {
+      right: 40
+    }
+  });
+
+	new Chartist.Line('.ct-chart-group-week', {
+    labels: <%= raw @days_week %>,
+    series: [
+      <%= @valence_averages_week %>,
+      <%= @arousal_averages_week %>
+    ]
+  }, {
+    fullWidth: true,
+    chartPadding: {
+      right: 40
+    }
+  });
+
+});
+<% end %>
+
+<% unless group_member?(@group, current_user) %> 
+	<%= button_to "Join Group", {action: "update"}, method: :patch %>
+<% end %>

@@ -12,25 +12,42 @@ sally = User.create(first_name: 'Sally', email: 'sally@ironhack.com', password: 
 frank = User.create(first_name: 'Frank', email: 'frank@ironhack.com', password: 'ironhack1', password_confirmation:'ironhack1')
 denise = User.create(first_name: 'Denise', email: 'denise@ironhack.com', password: 'ironhack1', password_confirmation:'ironhack1')
 
-# clark.emotions.create(valence: 0.25, arousal: 0.25)
- # User.find_by_id(7).emotions.create(valence: 0.25, arousal: 0.25)
-# clark.emotions.create(valence: 0.5, arousal: 0.3)
-# clark.emotions.create(valence: 0.25, arousal: 0.25)
-# clark.emotions.create(valence: 0.5, arousal: 0.3)
-# clark.emotions.create(valence: 0.25, arousal: 0.25)
-# clark.emotions.create(valence: 0.5, arousal: 0.3)
-# clark.emotions.create(valence: 0.25, arousal: 0.25)
-# clark.emotions.create(valence: 0.5, arousal: 0.3)
-# clark.emotions.create(valence: 0.25, arousal: 0.25)
-# clark.emotions.create(valence: 0.5, arousal: 0.3)
+for i in 0..30
+  emo = clark.emotions.create(valence: rand(), arousal: rand())
+  emo.created_at = i.days.ago
+  emo.save
+end
+
+for i in 0..30
+  emo = tim.emotions.create(valence: rand(), arousal: rand())
+  emo.created_at = i.days.ago
+  emo.save
+end
+
+for i in 0..30
+  emo = bob.emotions.create(valence: rand(), arousal: rand())
+  emo.created_at = i.days.ago
+  emo.save
+end
+
+for i in 0..30
+  emo = sally.emotions.create(valence: rand(), arousal: rand())
+  emo.created_at = i.days.ago
+  emo.save
+end
+
+for i in 0..30
+  emo = denise.emotions.create(valence: rand(), arousal: rand())
+  emo.created_at = i.days.ago
+  emo.save
+end
 
 school = clark.groups.create(name: 'Ironhack')
 church = clark.groups.create(name: 'Church')
 work = clark.groups.create(name: 'Work')
 
-# tim << church
-# sally << school
-# frank << school
-# denise << school
+school.users.push(tim)
+school.users.push(bob)
+school.users.push(sally)
+school.users.push(denise)
 
-# User.all << Student.create(...)
