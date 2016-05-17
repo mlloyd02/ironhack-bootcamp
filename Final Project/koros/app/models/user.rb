@@ -24,4 +24,26 @@ class User < ActiveRecord::Base
 		days = days.reverse
 	end
 
+	def valences_avg days
+		val_array = valences(days)
+		val_avg = val_array.reduce(:+)/val_array.length
+	end
+
+	def arousals_avg days
+		arous_array = arousals(days)
+		arous_avg = arous_array.reduce(:+)/arous_array.length
+	end
+
+	def dial_angle days
+		arous = arousals_avg(days)
+		val = valences_avg(days)
+		angle = Math.atan2((arous - 0.5), (val - 0.5))
+	end
+
+	def intensity days
+		arous = arousals_avg(days)
+		val = valences_avg(days)
+		intensity = Math.sqrt((val - 0.5)**2 + (arous - 0.5)**2)
+	end
+
 end

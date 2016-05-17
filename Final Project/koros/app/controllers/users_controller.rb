@@ -12,9 +12,14 @@ class UsersController < ApplicationController
 
 			@arousals_month = current_user.arousals 30
 			@arousals_week = current_user.arousals 7
-			
+
 			@days_month = current_user.format_days 30
 			@days_week = current_user.format_days 7
+
+			@angle_month = current_user.dial_angle 30
+
+			
+			@intensity_month = current_user.intensity 30
 
 		end
 	end

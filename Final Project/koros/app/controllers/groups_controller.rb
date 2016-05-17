@@ -25,7 +25,6 @@ class GroupsController < ApplicationController
 
 		@days_month = @group.format_days 30
 		@days_week = @group.format_days 7
-
 	end
 
 	def update
