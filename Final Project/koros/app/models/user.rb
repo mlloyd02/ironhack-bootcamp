@@ -37,13 +37,13 @@ class User < ActiveRecord::Base
 	def dial_angle days
 		arous = arousals_avg(days)
 		val = valences_avg(days)
-		angle = Math.atan2((arous - 0.5), (val - 0.5))
+		angle = Math.atan2((arous), (val))
 	end
 
 	def intensity days
 		arous = arousals_avg(days)
 		val = valences_avg(days)
-		intensity = Math.sqrt((val - 0.5)**2 + (arous - 0.5)**2)
+		intensity = Math.sqrt((val)**2 + (arous)**2)
 	end
 
 end

@@ -13,31 +13,31 @@ frank = User.create(first_name: 'Frank', email: 'frank@ironhack.com', password: 
 denise = User.create(first_name: 'Denise', email: 'denise@ironhack.com', password: 'ironhack1', password_confirmation:'ironhack1')
 
 for i in 0..30
-  emo = clark.emotions.create(valence: rand(), arousal: rand())
+  emo = clark.emotions.create(valence: rand(-1.00..1.00), arousal: rand(-1.00..1.00))
   emo.created_at = i.days.ago
   emo.save
 end
 
 for i in 0..30
-  emo = tim.emotions.create(valence: rand(), arousal: rand())
+  emo = tim.emotions.create(valence: rand(-1.00..1.00), arousal: rand(-1.00..1.00))
   emo.created_at = i.days.ago
   emo.save
 end
 
 for i in 0..30
-  emo = bob.emotions.create(valence: rand(), arousal: rand())
+  emo = bob.emotions.create(valence: rand(-1.00..1.00), arousal: rand(-1.00..1.00))
   emo.created_at = i.days.ago
   emo.save
 end
 
 for i in 0..30
-  emo = sally.emotions.create(valence: rand(), arousal: rand())
+  emo = sally.emotions.create(valence: rand(-1.00..1.00), arousal: rand(-1.00..1.00))
   emo.created_at = i.days.ago
   emo.save
 end
 
 for i in 0..30
-  emo = denise.emotions.create(valence: rand(), arousal: rand())
+  emo = denise.emotions.create(valence: rand(-1.00..1.00), arousal: rand(-1.00..1.00))
   emo.created_at = i.days.ago
   emo.save
 end
