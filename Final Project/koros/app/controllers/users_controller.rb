@@ -10,6 +10,12 @@ class UsersController < ApplicationController
 			emotions_month = current_user.emotions.limit(30)
 			emotions_week = current_user.emotions.limit(7)
 
+			# @valences_month = current_user.valences 30
+			# @valences_week = current_user.valences 7
+			# @arousals_month = current_user.arousals 30
+			# @arousals_week = current_user.arousals 7
+			# @days_month = current_user.format_days 30
+			# @days_week = current_user.format_days 7
 
 			@valences_month = emotions_month.pluck(:valence).reverse
 			@arousals_month = emotions_month.pluck(:arousal).reverse

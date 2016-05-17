@@ -3,6 +3,7 @@ require 'pry'
 class EmotionsController < ApplicationController
 
 	def index
+		my_emotions = current_user.emotions.all
 	end
 
 	def new

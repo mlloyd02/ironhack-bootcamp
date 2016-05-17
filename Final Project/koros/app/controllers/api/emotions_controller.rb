@@ -5,4 +5,6 @@ class Api::EmotionsController < ApplicationController
 		render json: my_emotions
 	end
 
+	
+
 end
