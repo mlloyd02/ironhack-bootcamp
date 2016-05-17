@@ -4,13 +4,13 @@
 
 	<div class="clock col-md-10 col-md-offset-1">
 		<div class="row">
-			
-
-			<div class="dial col-md-5">
-				<%= image_tag("dial.svg") %>
+				
+			<div class="clock-prog">
+				<div class="dial">
+					<%= image_tag("dial.svg") %>
+				</div>
+				<progress value="" max=".707"></progress>	
 			</div>
-			
-			
 		
 		</div>
 		<div class="row">
@@ -34,9 +34,7 @@
 				<% end %>
 			</div>
 
-			<div class="col-md-2">
-				<progress value="" max=".707"></progress>
-			</div>	
+			
 
 		</div>
 	</div>

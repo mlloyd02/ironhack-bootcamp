@@ -1,8 +1,8 @@
 class Users::RegistrationsController < Devise::RegistrationsController
 
 
-  def after_inactive_sign_up_path_for(resource)
-    "http://google.com"
+def after_sign_up_path_for(resource)
+    user_path(resource)
   end
 
 # before_action :configure_sign_up_params, only: [:create]

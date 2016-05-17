@@ -41,15 +41,21 @@
 .dial {
 	background-image: url("clock.svg");
 	background-repeat: no-repeat;
+	position: absolute;
+	top: -14px;
+	left: -100px;
 	padding: 20px;
 	margin: 30px;
 	margin-left: 130px;
-	position: absolute;
+}
+
+.dial-color {
+	background-image: url("clock-color.svg");
 }
 
 .dial img {
 	position: relative;
-	right: 15px;
+	right: 20px;
 	bottom: 20px;
 }
 
@@ -57,9 +63,12 @@ progress[value] {
 	-webkit-appearance: none;
   appearance: none;
 
-  width: 400px;
-  height: 75px;
-  transform: rotate(270deg);
+  	position: absolute;
+    top: 42%;
+    right: -50px;
+    width: 400px;
+    height: 75px;
+    transform: rotate(270deg);
 }
 
 progress[value]::-webkit-progress-bar {
@@ -74,8 +83,31 @@ progress[value]::-webkit-progress-value {
 	border-radius: 2px;
 }
 
+.color-version {
+	background-color: #ff9b6b;
+	border: 10px solid #1e1c1c;
+}
+
+#prog-color[value]::-webkit-progress-value {
+	background-color: #5ad40b;
+	border-radius: 2px;
+}
+
+#prog-color[value]::-webkit-progress-bar {
+	border-color: #1e1c1c;
+}
+
 .inline {
 	display: inline-block;
 }
 
+.clock-prog {
+	position: relative;
+	border: 10px solid #6a6969;
+	box-sizing: border-box;
+	width: 750px;
+	height: 500px;
+	border-radius: 15px;
+	float: right;
+}
 

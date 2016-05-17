@@ -17,6 +17,14 @@
 	<h1>Emotions Month</h1>
 	<div class="ct-chart-month"></div>
 	<h2>Average for month</h2>
+
+	<div class="clock-prog color-version">
+		<div class="dial dial-color">
+			<%= image_tag("dial-color.svg") %>
+		</div>
+		<progress id="prog-color" value=".5" max=".707"></progress>	
+	</div>
+
 	<p>Valence: <%= @valences_month_avg %></p>
 	<p>Arousal: <%= @arousals_month_avg %></p>
 	<h1>Emotions Week</h1>
