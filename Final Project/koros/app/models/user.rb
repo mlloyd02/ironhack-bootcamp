@@ -9,18 +9,18 @@ class User < ActiveRecord::Base
   has_many :groups, through: :memberships
 
   def valences days
-		emotions = self.current_user.emotions.limit(days)
-		valence = emotions.pluck(:valence).reverse
+		emotionz = emotions.limit(days)
+		valence = emotionz.pluck(:valence).reverse
 	end
 
 	def arousals days
-		emotions = self.current_user.emotions.limit(days)
-		arousal = emotions.pluck(:arousal).reverse
+		emotionz = emotions.limit(days)
+		arousal = emotionz.pluck(:arousal).reverse
 	end
 
 	def format_days days
-		emotions = self.current_user.emotions.limit(days)
-		days = emotions.map{ |emotion| emotion.created_at.strftime('%m/%d/%y')}
+		emotionz = emotions.limit(days)
+		days = emotionz.map{ |emotion| emotion.created_at.strftime('%m/%d/%y')}
 		days = days.reverse
 	end
 

@@ -34,8 +34,19 @@ class GroupsController < ApplicationController
 		redirect_to groups_path 
 	end
 
+	def destroy
+		group = Group.find_by_id(params[:id])
+		group.users.destroy(current_user)
+
+		if group.users.empty?
+      group.destroy
+    end
+
+		redirect_to groups_path
+	end
+
 	def group_params
-		params.require(:group).permit(:name)
+		params.require(:group).permit(:name, :unique_name)
 	end
 
 end

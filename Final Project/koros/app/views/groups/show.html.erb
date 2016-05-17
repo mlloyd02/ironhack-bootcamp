@@ -44,6 +44,10 @@ $(document).ready(function(){
 });
 <% end %>
 
+<% if group_member?(@group, current_user) %> 
+  <%= button_to "Leave Team", {action: "destroy"}, method: :delete %>
+<% end %>
+
 <% unless group_member?(@group, current_user) %> 
-	<%= button_to "Join Group", {action: "update"}, method: :patch %>
+	<%= button_to "Join Team", {action: "update"}, method: :patch %>
 <% end %>

@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :emotions
   
   get 'user' => 'users#index'
+  root :to => "emotions#index"
 
   namespace :api do
     resources :emotions
