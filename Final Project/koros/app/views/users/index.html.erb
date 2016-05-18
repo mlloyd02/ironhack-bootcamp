@@ -1,19 +1,10 @@
+<%= render "shared/navbar" %>
+
 <% if user_signed_in? %>
 
-	<h2><%= current_user.first_name %>, how are you feeling right now?</h2> 
+			<%= image_tag('impressionist.jpg', :id => "header-image") %>
+	
 
-	<%= link_to 'Logout', destroy_user_session_path, method: 'DELETE' %>
-
-	<h2>Your groups:</h2>
-	<ul>
-		<% @groups.each do |group| %>
-			<li>
-				<%= link_to group.name, group_path(group.id) %>
-			</li>
-		<% end %>
-	</ul>
-
-	<%= link_to "Create Group", new_group_path %>
 	<h1>Emotions Month</h1>
 	<div class="ct-chart-month"></div>
 
@@ -47,51 +38,13 @@
 
 <%= javascript_tag do %>
 
-	function setUserClockMonth(angle, intensity) {
-  	$('.dial-color-month img').css("transform", "rotate(" + angle + "rad)");
-  	$('#prog-color').attr('value', intensity);
-	};
+	setClockMonth(<%= current_user.dial_angle 30 %>, <%= current_user.intensity 30 %>)
 
-	function setUserClockWeek(angle, intensity) {
-  	$('.dial-color-week img').css("transform", "rotate(" + angle + "rad)");
-  	$('#prog-color-week').attr('value', intensity);
-	};
+	setClockWeek(<%= current_user.dial_angle 7 %>, <%= current_user.intensity 7 %>)
 
-	setUserClockMonth(<%= current_user.dial_angle 30 %>, <%= current_user.intensity 30 %>)
+	showGraphMonth(<%= current_user.valences 30 %>, <%= current_user.arousals 30 %>, <%= raw current_user.format_days 30 %>)
 
-	setUserClockWeek(<%= current_user.dial_angle 7 %>, <%= current_user.intensity 7 %>)
+	showGraphWeek(<%= current_user.valences 7 %>, <%= current_user.arousals 7 %>, <%= raw current_user.format_days 7 %>)
 
-<% end %>
-
-<%= javascript_tag do %>
-$(document).ready(function(){
-
- new Chartist.Line('.ct-chart-month', {
-    labels: <%= raw current_user.format_days 30 %>,
-    series: [
-      <%= current_user.valences 30 %>,
-      <%= current_user.arousals 30 %>
-    ]
-  }, {
-    fullWidth: true,
-    chartPadding: {
-      right: 40
-    }
-  });
-
-	new Chartist.Line('.ct-chart-week', {
-    labels: <%= raw current_user.format_days 7 %>,
-    series: [
-      <%= current_user.valences 7 %>,
-      <%= current_user.arousals 7 %>
-    ]
-  }, {
-    fullWidth: true,
-    chartPadding: {
-      right: 40
-    }
-  });
-
-});
 <% end %>
 

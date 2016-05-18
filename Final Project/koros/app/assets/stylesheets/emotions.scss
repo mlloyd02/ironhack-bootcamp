@@ -2,6 +2,14 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+body {
+    background-color: #f6edde !important;
+}
+
+#header-image {
+	width: 100%;
+}
+
 .AScontainer {
 		margin:2em 0 6em 0;
 		background-repeat: no-repeat, no-repeat;
@@ -124,3 +132,12 @@ progress[value]::-webkit-progress-value {
 	float: right;
 }
 
+.ct-series-a .ct-area {
+    fill: #F1560C;
+    fill-opacity: .4;
+}
+
+.ct-series-b .ct-area {
+    fill: #08A26C;
+    fill-opacity: .4;
+}

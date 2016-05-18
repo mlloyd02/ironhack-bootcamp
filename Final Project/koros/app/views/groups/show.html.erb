@@ -1,3 +1,5 @@
+<%= render "shared/navbar" %>
+
 <h1><%= @group.name %></h1>
 <ul>
 	<% @users.each do |user| %>
@@ -37,37 +39,27 @@
 
 <%= javascript_tag do %>
 
-  function setUserClockMonth(angle, intensity) {
+  <!-- function setClockMonth(angle, intensity) {
     $('.dial-color-month img').css("transform", "rotate(" + angle + "rad)");
     $('#prog-color').attr('value', intensity);
   };
 
-  function setUserClockWeek(angle, intensity) {
+  function setClockWeek(angle, intensity) {
     $('.dial-color-week img').css("transform", "rotate(" + angle + "rad)");
     $('#prog-color-week').attr('value', intensity);
-  };
+  }; -->
 
-  setUserClockMonth(<%= @group.dial_angle 30 %>, <%= @group.intensity 30 %>)
+  setClockMonth(<%= @group.dial_angle 30 %>, <%= @group.intensity 30 %>)
 
-  setUserClockWeek(<%= @group.dial_angle 7 %>, <%= @group.intensity 7 %>)
+  setClockWeek(<%= @group.dial_angle 7 %>, <%= @group.intensity 7 %>)
 
 <% end %>
 
 <%= javascript_tag do %>
-$(document).ready(function(){
+<!-- $(document).ready(function(){ -->
 
-  new Chartist.Line('.ct-chart-group-month', {
-    labels: <%= raw @group.format_days 30 %>,
-    series: [
-      <%= @group.valence_avg 30 %>,
-      <%= @group.arousal_avg 30 %>
-    ]
-  }, {
-    fullWidth: true,
-    chartPadding: {
-      right: 40
-    }
-  });
+  showGraphMonth(<%= @group.valence_avg 30 %>, <%= @group.arousal_avg 30 %>, <%= raw @group.format_days 30 %>)
+
 
 	new Chartist.Line('.ct-chart-group-week', {
     labels: <%= raw @group.format_days 7 %>,
@@ -82,6 +74,6 @@ $(document).ready(function(){
     }
   });
 
-});
+<!-- }); -->
 <% end %>
 

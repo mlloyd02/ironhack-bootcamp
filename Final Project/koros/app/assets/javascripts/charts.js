@@ -1,67 +1,47 @@
-$(document).ready(function(){
-  // var valence = [];
-  // var arousal = [];
-  // var days = [];
+if($("body").attr("class", "users-index") || $("body").attr("class", "groups-show")  ) {  
 
-  // function chart() {
-    
-  //   new Chartist.Line('ct.chart', {
-  //     labels: days,
-  //     series: [valence, arousal]
-  //   }, {
-  //     fullWidth: true,
-  //     chartPadding: {
-  //       right: 40
-  //     }
-  //   }); 
-  // };
+  function showGraphMonth(valences, arousals, days) {
 
-  // var request = $.ajax("/api/emotions");
+    new Chartist.Line('.ct-chart-month', {
+      labels: days,
+      series: [
+        valences,
+        arousals
+      ]
+    }, {
+      high: 1,
+      low: -1,
+      showArea: true,
+      showLine: false,
+      showPoint: false,
+      fullWidth: true,
+      chartPadding: {
+        right: 40
+      }
+    });
 
+  }
 
+  function showGraphWeek(valences, arousals, days) {
 
-  // $.when(request).done(function(result) {
+    new Chartist.Line('.ct-chart-week', {
+      labels: days,
+      series: [
+        valences,
+        arousals
+      ]
+    }, {
+      high: 1,
+      low: -1,
+      showArea: true,
+      showLine: false,
+      showPoint: false,
+      fullWidth: true,
+      chartPadding: {
+        right: 40
+      }
+    });
 
-  //   for (var i = 0; i < result.length; i++) {
-  //     arousal.push(result[i].arousal);
-  //     valence.push(result[i].valence);
-  //     days.push(i);
-  //   };
+  }
 
-  //   chart();
-  // });
-
-
-  // $.ajax({
-  //   url: "/api/emotions",
-  //   success: function (result) {
-  //     for (var i = 0; i < result.length; i++) {
-  //       arousal.push(result[i].arousal);
-  //       valence.push(result[i].valence);
-  //       days.push(i);
-  //     }
-  //   }
-  // });
-
-console.log('hi');
-
-  (renderChart() {
-    alert('hi');
-  })();  
-});
-// });
-
-//   new Chartist.Line('.ct-chart', {
-//     labels: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
-//     series: [
-//       [12, 9, 7, 8, 5],
-//       [2, 1, 3.5, 7, 3],
-//       [1, 3, 4, 5, 6]
-//     ]
-//   }, {
-//     fullWidth: true,
-//     chartPadding: {
-//       right: 40
-//     }
-//   });
-// });   
+}

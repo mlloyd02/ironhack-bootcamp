@@ -1,23 +1,13 @@
-$(document).ready(function(){
 
-	function setUserClockWeek(angle, intensity) {
-  	$('.dial img').css("transform", "rotate(" + angle + "rad)");
-  	$('progress').attr('value', intensity);
-	};
+if($("body").attr("class", "users-index") || $("body").attr("class", "groups-show")  ) {	
 
-	function setUserClockMonth(angle, intensity) {
+	function setClockMonth(angle, intensity) {
   	$('.dial-color-month img').css("transform", "rotate(" + angle + "rad)");
-  	$('.prog-color .month').attr('value', intensity);
+  	$('#prog-color').attr('value', intensity);
 	};
 
-	function setGroupClockWeek(angle, intensity) {
-  	$('.dial img').css("transform", "rotate(" + angle + "rad)");
-  	$('progress').attr('value', intensity);
-  };
-
-  function setGroupClockMonth(angle, intensity) {
-  	$('.dial img').css("transform", "rotate(" + angle + "rad)");
-  	$('progress').attr('value', intensity);
-  };
-
-});
+	function setClockWeek(angle, intensity) {
+  	$('.dial-color-week img').css("transform", "rotate(" + angle + "rad)");
+  	$('#prog-color-week').attr('value', intensity);
+	};
+}
