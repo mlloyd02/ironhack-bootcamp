@@ -1,16 +1,13 @@
-require 'pry'
-
 class EmotionsController < ApplicationController
 
 	def index
-		my_emotions = current_user.emotions.all
 	end
 
 	def new
 		redirect_to new_user_session_path unless user_signed_in?
 		@emotion = Emotion.new
-		@emotion.arousal ||= 0.50
-		@emotion.valence ||= 0.50
+		@emotion.arousal ||= 0.00
+		@emotion.valence ||= 0.00
 	end
 
 	def create

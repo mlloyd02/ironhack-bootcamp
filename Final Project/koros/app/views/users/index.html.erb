@@ -16,25 +16,26 @@
 	<%= link_to "Create Group", new_group_path %>
 	<h1>Emotions Month</h1>
 	<div class="ct-chart-month"></div>
-	<h2>Average for month</h2>
 
 	<div class="clock-prog color-version">
-		<div class="dial dial-color">
+		<div class="dial dial-color-month">
 			<%= image_tag("dial-color.svg") %>
 		</div>
 		<progress id="prog-color" value=".5" max="1.414"></progress>	
 	</div>
 
-	<p>Valence: <%= @valences_month_avg %></p>
-	<p>Arousal: <%= @arousals_month_avg %></p>
+	
+	
 	<h1>Emotions Week</h1>
 	<div class="ct-chart-week"></div>
-	<h2>Average for week</h2>
-	<p>Valence: <%= @valences_week_avg %></p>
-	<p>Arousal: <%= @arousals_week_avg %></p>
+	
 
-	<h1><%= @angle_month %></h1>
-	<h1><%= @intensity_month %></h1>
+	<div class="clock-prog color-version">
+		<div class="dial dial-color-week">
+			<%= image_tag("dial-color.svg") %>
+		</div>
+		<progress id="prog-color-week" value="" max="1.414"></progress>
+	</div>
 
 
 <% else %>
@@ -43,14 +44,33 @@
 
 <% end %>
 
+
+<%= javascript_tag do %>
+
+	function setUserClockMonth(angle, intensity) {
+  	$('.dial-color-month img').css("transform", "rotate(" + angle + "rad)");
+  	$('#prog-color').attr('value', intensity);
+	};
+
+	function setUserClockWeek(angle, intensity) {
+  	$('.dial-color-week img').css("transform", "rotate(" + angle + "rad)");
+  	$('#prog-color-week').attr('value', intensity);
+	};
+
+	setUserClockMonth(<%= current_user.dial_angle 30 %>, <%= current_user.intensity 30 %>)
+
+	setUserClockWeek(<%= current_user.dial_angle 7 %>, <%= current_user.intensity 7 %>)
+
+<% end %>
+
 <%= javascript_tag do %>
 $(document).ready(function(){
 
  new Chartist.Line('.ct-chart-month', {
-    labels: <%= raw @days_month %>,
+    labels: <%= raw current_user.format_days 30 %>,
     series: [
-      <%= @valences_month %>,
-      <%= @arousals_month %>
+      <%= current_user.valences 30 %>,
+      <%= current_user.arousals 30 %>
     ]
   }, {
     fullWidth: true,
@@ -60,10 +80,10 @@ $(document).ready(function(){
   });
 
 	new Chartist.Line('.ct-chart-week', {
-    labels: <%= raw @days_week %>,
+    labels: <%= raw current_user.format_days 7 %>,
     series: [
-      <%= @valences_week %>,
-      <%= @arousals_week %>
+      <%= current_user.valences 7 %>,
+      <%= current_user.arousals 7 %>
     ]
   }, {
     fullWidth: true,

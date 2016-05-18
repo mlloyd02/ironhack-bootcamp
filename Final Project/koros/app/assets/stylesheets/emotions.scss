@@ -49,7 +49,11 @@
 	margin-left: 130px;
 }
 
-.dial-color {
+.dial-color-month {
+	background-image: url("clock-color.svg");
+}
+
+.dial-color-week {
 	background-image: url("clock-color.svg");
 }
 
@@ -94,6 +98,15 @@ progress[value]::-webkit-progress-value {
 }
 
 #prog-color[value]::-webkit-progress-bar {
+	border-color: #1e1c1c;
+}
+
+#prog-color-week[value]::-webkit-progress-value {
+	background-color: #5ad40b;
+	border-radius: 2px;
+}
+
+#prog-color-week[value]::-webkit-progress-bar {
 	border-color: #1e1c1c;
 }
 

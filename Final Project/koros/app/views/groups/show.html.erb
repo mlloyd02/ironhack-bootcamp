@@ -9,17 +9,58 @@
 
 <h1>Group Averages for Month</h1>
 <div class="ct-chart-group-month"></div>
+
+<div class="clock-prog color-version">
+  <div class="dial dial-color-month">
+    <%= image_tag("dial-color.svg") %>
+  </div>
+  <progress id="prog-color" value=".5" max="1.414"></progress>  
+</div>
+
 <h1>Group Averages for week</h1>
 <div class="ct-chart-group-week"></div>
+
+<div class="clock-prog color-version">
+  <div class="dial dial-color-week">
+    <%= image_tag("dial-color.svg") %>
+  </div>
+  <progress id="prog-color-week" value="" max="1.414"></progress>
+</div>
+
+<% if group_member?(@group, current_user) %> 
+  <%= button_to "Leave Team", {action: "destroy"}, method: :delete %>
+<% end %>
+
+<% unless group_member?(@group, current_user) %> 
+  <%= button_to "Join Team", {action: "update"}, method: :patch %>
+<% end %>
+
+<%= javascript_tag do %>
+
+  function setUserClockMonth(angle, intensity) {
+    $('.dial-color-month img').css("transform", "rotate(" + angle + "rad)");
+    $('#prog-color').attr('value', intensity);
+  };
+
+  function setUserClockWeek(angle, intensity) {
+    $('.dial-color-week img').css("transform", "rotate(" + angle + "rad)");
+    $('#prog-color-week').attr('value', intensity);
+  };
+
+  setUserClockMonth(<%= @group.dial_angle 30 %>, <%= @group.intensity 30 %>)
+
+  setUserClockWeek(<%= @group.dial_angle 7 %>, <%= @group.intensity 7 %>)
+
+<% end %>
 
 <%= javascript_tag do %>
 $(document).ready(function(){
 
   new Chartist.Line('.ct-chart-group-month', {
-    labels: <%= raw @days_month %>,
+    labels: <%= raw @group.format_days 30 %>,
     series: [
-      <%= @valence_averages_month %>,
-      <%= @arousal_averages_month %>
+      <%= @group.valence_avg 30 %>,
+      <%= @group.arousal_avg 30 %>
     ]
   }, {
     fullWidth: true,
@@ -29,10 +70,10 @@ $(document).ready(function(){
   });
 
 	new Chartist.Line('.ct-chart-group-week', {
-    labels: <%= raw @days_week %>,
+    labels: <%= raw @group.format_days 7 %>,
     series: [
-      <%= @valence_averages_week %>,
-      <%= @arousal_averages_week %>
+      <%= @group.valence_avg 7 %>,
+      <%= @group.arousal_avg 7 %>
     ]
   }, {
     fullWidth: true,
@@ -44,10 +85,3 @@ $(document).ready(function(){
 });
 <% end %>
 
-<% if group_member?(@group, current_user) %> 
-  <%= button_to "Leave Team", {action: "destroy"}, method: :delete %>
-<% end %>
-
-<% unless group_member?(@group, current_user) %> 
-	<%= button_to "Join Team", {action: "update"}, method: :patch %>
-<% end %>
