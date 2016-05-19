@@ -2,12 +2,62 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+
 body {
     background-color: #f6edde !important;
 }
 
-#header-image {
+.emotions-new {
+	background-color: white !important;
+}
+
+.jumbotron {
+	background-color: #08A26C !important;
+	margin-bottom: 20px !important;
+}
+
+.left {
+	float: left;
+}
+
+.right {
+	float: right;
+}
+
+.inline {
 	width: 100%;
+}
+
+.members {
+	background-color: #f8f8f8;
+	height: 60px;
+	border: 1px solid #e7e7e7;
+}
+
+.members li {
+	position: relative;
+	list-style-type: none;
+	display: inline;
+	font-size: 15px;
+	padding-right: 20px;
+	top: 20px;
+}
+
+.jumbotron h1 {
+	margin-left: 300px;
+}
+
+.navbar-brand img {
+	height: 23px;
+}
+
+.group {
+	margin-left: 20px;
+	margin-top: 20px;
+}
+
+.AffectiveSlider {
+	padding-top: 200px;	
 }
 
 .AScontainer {
@@ -15,15 +65,14 @@ body {
 		background-repeat: no-repeat, no-repeat;
 		background-position: left, right;
 		background-size:contain;
-		padding: 0 75px 0 75px;
+		padding: 0px 0px 0px 25px;
+		width: 500px;
 }
 .arousal {
-	background-image: url(), url();
-	background-size:contain;
+	background-size:400px;
 }
 .pleasure {
-	background-image: url(), url();
-	background-size:contain;
+	background-size:400px;
 }
 .AffectiveSlider input {
 	/* Hide the number input */
@@ -129,7 +178,20 @@ progress[value]::-webkit-progress-value {
 	width: 750px;
 	height: 500px;
 	border-radius: 15px;
+	display: block;
+	margin: auto;
+}
+
+.clock-prog-bw {
+	position: relative;
+	border: 10px solid #6a6969;
+	box-sizing: border-box;
+	width: 750px;
+	height: 500px;
+	border-radius: 15px;
+	display: block;
 	float: right;
+	margin-top: 130px;
 }
 
 .ct-series-a .ct-area {

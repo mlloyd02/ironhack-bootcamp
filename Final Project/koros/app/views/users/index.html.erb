@@ -1,34 +1,34 @@
-<%= render "shared/navbar" %>
+<div class="jumbotron">
+  <h1><%= current_user.first_name %></h1>
+</div>
 
 <% if user_signed_in? %>
 
-			<%= image_tag('impressionist.jpg', :id => "header-image") %>
-	
+	<div class="row">
+		<div class="col-md-10 col-md-offset-1">
+			<h1>Weekly Emotions</h1>
+			<div class="ct-chart-week"></div>
+			<h1>Overall Weekly Mood</h1>
+			<div class="clock-prog color-version">
+				<div class="dial dial-color-week">
+					<%= image_tag("dial-color.svg") %>
+				</div>
+				<progress id="prog-color-week" value="" max="1.414"></progress>
+			</div>
+			
+			<h1>Monthly Emotions</h1>
+			<div class="ct-chart-month"></div>
+			<h1>Overall Monthly Mood</h1>
 
-	<h1>Emotions Month</h1>
-	<div class="ct-chart-month"></div>
+			<div class="clock-prog color-version">
+				<div class="dial dial-color-month">
+					<%= image_tag("dial-color.svg") %>
+				</div>
+				<progress id="prog-color" value=".5" max="1.414"></progress>	
+			</div>
 
-	<div class="clock-prog color-version">
-		<div class="dial dial-color-month">
-			<%= image_tag("dial-color.svg") %>
 		</div>
-		<progress id="prog-color" value=".5" max="1.414"></progress>	
 	</div>
-
-	
-	
-	<h1>Emotions Week</h1>
-	<div class="ct-chart-week"></div>
-	
-
-	<div class="clock-prog color-version">
-		<div class="dial dial-color-week">
-			<%= image_tag("dial-color.svg") %>
-		</div>
-		<progress id="prog-color-week" value="" max="1.414"></progress>
-	</div>
-
-
 <% else %>
 
 	<h2>Nobody logged in</h2>
@@ -38,13 +38,13 @@
 
 <%= javascript_tag do %>
 
-	setClockMonth(<%= current_user.dial_angle 30 %>, <%= current_user.intensity 30 %>)
+	setClockMonth(<%= current_user.dial_angle 30 %>, <%= current_user.intensity 30 %>);
 
-	setClockWeek(<%= current_user.dial_angle 7 %>, <%= current_user.intensity 7 %>)
+	setClockWeek(<%= current_user.dial_angle 7 %>, <%= current_user.intensity 7 %>);
 
-	showGraphMonth(<%= current_user.valences 30 %>, <%= current_user.arousals 30 %>, <%= raw current_user.format_days 30 %>)
+	showGraphMonth(<%= current_user.valences 30 %>, <%= current_user.arousals 30 %>, <%= raw current_user.format_days 30 %>);
 
-	showGraphWeek(<%= current_user.valences 7 %>, <%= current_user.arousals 7 %>, <%= raw current_user.format_days 7 %>)
+	showGraphWeek(<%= current_user.valences 7 %>, <%= current_user.arousals 7 %>, <%= raw current_user.format_days 7 %>);
 
 <% end %>
 

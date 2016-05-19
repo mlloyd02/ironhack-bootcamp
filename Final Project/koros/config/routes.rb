@@ -1,11 +1,24 @@
 Rails.application.routes.draw do
 
+devise_scope :user do 
+
+    authenticated :user do
+      get "/" => 'users#index'
+    end
+    unauthenticated :user do
+      get "/" => 'users/registrations#new'
+    end
+
+end
+
   devise_for :users, controllers: { sessions: "users/sessions", registrations: "users/registrations" }
+
+
   resources :groups
+
   resources :emotions
   
   get 'user' => 'users#index'
-  root :to => "emotions#index"
 
   namespace :api do
     resources :emotions

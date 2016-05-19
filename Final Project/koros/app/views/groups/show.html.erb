@@ -1,79 +1,69 @@
-<%= render "shared/navbar" %>
-
-<h1><%= @group.name %></h1>
-<ul>
-	<% @users.each do |user| %>
-		<li>
-			<%= user.first_name %>
-		</li>
-	<% end %>
-</ul>
-
-<h1>Group Averages for Month</h1>
-<div class="ct-chart-group-month"></div>
-
-<div class="clock-prog color-version">
-  <div class="dial dial-color-month">
-    <%= image_tag("dial-color.svg") %>
-  </div>
-  <progress id="prog-color" value=".5" max="1.414"></progress>  
+<div class="jumbotron">
+  <h1><%= @group.name %></h1>
+</div>
+<div class="members">
+  <ul>
+    <li><strong>Group Members:</strong></li>
+  	<% @users.each do |user| %>
+  		<li>
+  			<%= user.first_name %>
+  		</li>
+  	<% end %>
+  </ul>
 </div>
 
-<h1>Group Averages for week</h1>
-<div class="ct-chart-group-week"></div>
+<div class="group">
 
-<div class="clock-prog color-version">
-  <div class="dial dial-color-week">
-    <%= image_tag("dial-color.svg") %>
-  </div>
-  <progress id="prog-color-week" value="" max="1.414"></progress>
+  <% if group_member?(@group, current_user) %> 
+    <%= button_to "Leave Group", {action: "destroy"}, method: :delete %>
+  <% end %>
+
+  <% unless group_member?(@group, current_user) %> 
+    <%= button_to "Join Group", {action: "update"}, method: :patch %>
+  <% end %>
+
 </div>
 
-<% if group_member?(@group, current_user) %> 
-  <%= button_to "Leave Team", {action: "destroy"}, method: :delete %>
-<% end %>
+<div class="row">
+  <div class="col-md-10 col-md-offset-1">
+    
+    <h1>Weekly Emotions</h1>
+    <div class="ct-chart-week"></div>
+    <h1>Overall Weekly Mood</h1>
+    <div class="clock-prog color-version">
+      <div class="dial dial-color-week">
+        <%= image_tag("dial-color.svg") %>
+      </div>
+      <progress id="prog-color-week" value="" max="1.414"></progress>
+    </div>
 
-<% unless group_member?(@group, current_user) %> 
-  <%= button_to "Join Team", {action: "update"}, method: :patch %>
-<% end %>
+    <h1>Monthly Emotions</h1>
+    <div class="ct-chart-month"></div>
+    <h1>Overall Monthly Mood</h1>
+    <div class="clock-prog color-version">
+      <div class="dial dial-color-month">
+        <%= image_tag("dial-color.svg") %>
+      </div>
+      <progress id="prog-color" value=".5" max="1.414"></progress>  
+    </div>
+
+  </div>
+</div>  
+
+
 
 <%= javascript_tag do %>
 
-  <!-- function setClockMonth(angle, intensity) {
-    $('.dial-color-month img').css("transform", "rotate(" + angle + "rad)");
-    $('#prog-color').attr('value', intensity);
-  };
+$(document).ready(function(){
 
-  function setClockWeek(angle, intensity) {
-    $('.dial-color-week img').css("transform", "rotate(" + angle + "rad)");
-    $('#prog-color-week').attr('value', intensity);
-  }; -->
+  setClockMonth(<%= @group.dial_angle 30 %>, <%= @group.intensity 30 %>);
 
-  setClockMonth(<%= @group.dial_angle 30 %>, <%= @group.intensity 30 %>)
+  setClockWeek(<%= @group.dial_angle 7 %>, <%= @group.intensity 7 %>);
 
-  setClockWeek(<%= @group.dial_angle 7 %>, <%= @group.intensity 7 %>)
+  showGraphMonth(<%= @group.valence_avg 30 %>, <%= @group.arousal_avg 30 %>, <%= raw @group.format_days 30 %>);
 
-<% end %>
+  showGraphWeek(<%= @group.valence_avg 7 %>, <%= @group.arousal_avg 7 %>, <%= raw @group.format_days 7 %>);
 
-<%= javascript_tag do %>
-<!-- $(document).ready(function(){ -->
-
-  showGraphMonth(<%= @group.valence_avg 30 %>, <%= @group.arousal_avg 30 %>, <%= raw @group.format_days 30 %>)
-
-
-	new Chartist.Line('.ct-chart-group-week', {
-    labels: <%= raw @group.format_days 7 %>,
-    series: [
-      <%= @group.valence_avg 7 %>,
-      <%= @group.arousal_avg 7 %>
-    ]
-  }, {
-    fullWidth: true,
-    chartPadding: {
-      right: 40
-    }
-  });
-
-<!-- }); -->
+});
 <% end %>
 

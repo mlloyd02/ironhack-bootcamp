@@ -1,5 +1,3 @@
-if($("body").attr("class", "users-index") || $("body").attr("class", "groups-show")  ) {  
-
   function showGraphMonth(valences, arousals, days) {
 
     new Chartist.Line('.ct-chart-month', {
@@ -43,5 +41,3 @@ if($("body").attr("class", "users-index") || $("body").attr("class", "groups-sho
     });
 
   }
-
-}

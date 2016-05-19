@@ -1,16 +1,7 @@
 class UsersController < ApplicationController
-	#before_action :authenticate_user!, only: :show
+	before_action :authenticate_user!, only: [:index]
 
 	def index
-
-		@groups = current_user.groups.all
-
-		unless current_user.emotions.empty? 
-		end
-		
-	end
-
-	def show
 	end
 
 end
