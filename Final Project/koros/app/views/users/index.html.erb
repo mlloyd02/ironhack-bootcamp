@@ -1,34 +1,12 @@
-<div class="jumbotron">
-  <h1><%= current_user.first_name %></h1>
-</div>
-
 <% if user_signed_in? %>
-
-	<div class="row">
-		<div class="col-md-10 col-md-offset-1">
-			<h1>Weekly Emotions</h1>
-			<div class="ct-chart-week"></div>
-			<h1>Overall Weekly Mood</h1>
-			<div class="clock-prog color-version">
-				<div class="dial dial-color-week">
-					<%= image_tag("dial-color.svg") %>
-				</div>
-				<progress id="prog-color-week" value="" max="1.414"></progress>
-			</div>
-			
-			<h1>Monthly Emotions</h1>
-			<div class="ct-chart-month"></div>
-			<h1>Overall Monthly Mood</h1>
-
-			<div class="clock-prog color-version">
-				<div class="dial dial-color-month">
-					<%= image_tag("dial-color.svg") %>
-				</div>
-				<progress id="prog-color" value=".5" max="1.414"></progress>	
-			</div>
-
-		</div>
+	<div class="jumbotron">
+	  <h1><%= current_user.first_name %></h1>
+		<%= button_to "Log Emotion", new_emotion_path, :class => 'btn btn-default log-emotion', :method => "get" %>
 	</div>
+	<div class="white-space"></div>
+
+	<%= render 'shared/charts' %>
+
 <% else %>
 
 	<h2>Nobody logged in</h2>

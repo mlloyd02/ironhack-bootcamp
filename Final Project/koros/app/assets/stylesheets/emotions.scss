@@ -4,7 +4,8 @@
 
 
 body {
-    background-color: #f6edde !important;
+    background-color: #6a6969 !important;
+    color: #5B4421 !important;
 }
 
 .emotions-new {
@@ -12,8 +13,11 @@ body {
 }
 
 .jumbotron {
+	position: relative;
 	background-color: #08A26C !important;
 	margin-bottom: 20px !important;
+	height: 40px;
+	top: -20px;
 }
 
 .left {
@@ -29,9 +33,11 @@ body {
 }
 
 .members {
+	position: relative;
 	background-color: #f8f8f8;
 	height: 60px;
 	border: 1px solid #e7e7e7;
+	top: -40px;
 }
 
 .members li {
@@ -44,7 +50,12 @@ body {
 }
 
 .jumbotron h1 {
-	margin-left: 300px;
+	position: relative;
+	top: -50px;
+	color: white !important;
+	text-align: center;
+	text-shadow: 1px 1px grey;
+    font-family: helveticaneue;
 }
 
 .navbar-brand img {
@@ -52,12 +63,50 @@ body {
 }
 
 .group {
-	margin-left: 20px;
-	margin-top: 20px;
+	float: right;
+	margin-right: 25px;
+	margin-top: -20px;
+}
+
+.panel-heading {
+	background-color: #f6edde;
+	color: #5b4421 !important;
+}
+
+.panel-body {
+	background-color: #f6edde;
+}
+
+.panel-heading {
+	
+}
+
+.log-emotion {
+	position: relative;
+	top: -116px;
+	right: 25px;
+	float: right;
+}
+
+.white-space {
+	position: relative;
+	background-color: #f8f8f8;
+	height: 25px;
+	border: 1px solid #e7e7e7;
+	top: -40px;
+}
+
+.panel-heading img {
+	position: relative;
+	float: right;
+	height: 65px;
+	top: -67px;
 }
 
 .AffectiveSlider {
-	padding-top: 200px;	
+	width: 500px;
+	margin: auto;	
+	margin-top: 50px;
 }
 
 .AScontainer {
@@ -95,6 +144,14 @@ body {
 	background-size:100%;
 	background-position: center;	
 }
+
+.slider-submit {
+	position: relative;
+	top: -350px;
+	left: -100px;
+	border: 3px solid #6a6969 !important;
+}
+
 .dial {
 	background-image: url("clock.svg");
 	background-repeat: no-repeat;
@@ -190,8 +247,7 @@ progress[value]::-webkit-progress-value {
 	height: 500px;
 	border-radius: 15px;
 	display: block;
-	float: right;
-	margin-top: 130px;
+	margin: auto;
 }
 
 .ct-series-a .ct-area {

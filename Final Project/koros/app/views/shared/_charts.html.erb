@@ -1,0 +1,52 @@
+<div class="row">
+  <div class="col-md-10 col-md-offset-1">
+    
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h1>Weekly Emotions</h1>
+        <%= image_tag('key.svg') %>
+      </div>
+      <div class="panel-body">
+        <div class="ct-chart-week"></div>
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading"> 
+        <h1>Overall Weekly Mood</h1>
+      </div>
+      <div class="panel-body">
+        <div class="clock-prog color-version">
+         <div class="dial dial-color-week">
+           <%= image_tag("dial-color.svg") %>
+          </div>
+         <progress id="prog-color-week" value="" max="1.414"></progress>
+        </div>
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h1>Monthly Emotions</h1>
+        <%= image_tag('key.svg') %>
+      </div>
+      <div class="panel-body">
+        <div class="ct-chart-month"></div>
+      </div>
+    </div>
+    
+    <div class="panel panel-default">
+      <div class="panel-heading"> 
+        <h1>Overall Monthly Mood</h1>
+      </div>
+      <div class="panel-body">
+        <div class="clock-prog color-version">
+          <div class="dial dial-color-month">
+            <%= image_tag("dial-color.svg") %>
+          </div>
+          <progress id="prog-color" value=".5" max="1.414"></progress>  
+        </div>
+      </div> 
+    </div>  
+  </div>
+</div>  

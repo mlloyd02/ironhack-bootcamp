@@ -10,47 +10,22 @@
   		</li>
   	<% end %>
   </ul>
-</div>
 
-<div class="group">
+  <div class="group">
 
-  <% if group_member?(@group, current_user) %> 
-    <%= button_to "Leave Group", {action: "destroy"}, method: :delete %>
-  <% end %>
+    <% if group_member?(@group, current_user) %> 
+      <%= button_to "Leave Group", {action: "destroy"}, :class => 'btn btn-default', method: :delete %>
+    <% end %>
 
-  <% unless group_member?(@group, current_user) %> 
-    <%= button_to "Join Group", {action: "update"}, method: :patch %>
-  <% end %>
-
-</div>
-
-<div class="row">
-  <div class="col-md-10 col-md-offset-1">
-    
-    <h1>Weekly Emotions</h1>
-    <div class="ct-chart-week"></div>
-    <h1>Overall Weekly Mood</h1>
-    <div class="clock-prog color-version">
-      <div class="dial dial-color-week">
-        <%= image_tag("dial-color.svg") %>
-      </div>
-      <progress id="prog-color-week" value="" max="1.414"></progress>
-    </div>
-
-    <h1>Monthly Emotions</h1>
-    <div class="ct-chart-month"></div>
-    <h1>Overall Monthly Mood</h1>
-    <div class="clock-prog color-version">
-      <div class="dial dial-color-month">
-        <%= image_tag("dial-color.svg") %>
-      </div>
-      <progress id="prog-color" value=".5" max="1.414"></progress>  
-    </div>
+    <% unless group_member?(@group, current_user) %> 
+      <%= button_to "Join Group", {action: "update"}, :class => 'btn btn-default', method: :patch %>
+    <% end %>
 
   </div>
-</div>  
 
+</div>
 
+<%= render 'shared/charts' %>
 
 <%= javascript_tag do %>
 
